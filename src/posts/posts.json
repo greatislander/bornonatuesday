@@ -1,5 +1,5 @@
 {
   "layout": "main",
   "tags": "posts",
-  "permalink": "/comics/{{ page.fileSlug }}/"
+  "permalink": "/comic/{{ page.fileSlug }}/"
 }
