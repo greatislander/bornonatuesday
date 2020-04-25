@@ -16,6 +16,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('extractImages', extractImagesFilter);
 
   eleventyConfig.addPassthroughCopy('src/images');
+  eleventyConfig.addPassthroughCopy('src/admin/config.yml');
 
   eleventyConfig.addFilter('dateFilter', dateFilter);
   eleventyConfig.addFilter('w3cDateFilter', w3cDateFilter);
