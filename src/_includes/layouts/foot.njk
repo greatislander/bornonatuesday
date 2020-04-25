@@ -12,43 +12,10 @@
     </script>
     {% endif %}
 
-    {% if description %}
     <script type="module">
       (function() {
         document.body.classList.add('with-js');
-        const button = document.querySelector('.q');
-        const wrapper = document.querySelector('.wrapper');
-        const dialog = document.querySelector('[role="dialog"]');
-        const close = document.querySelector('.close');
-
-        dialog.hidden = true;
-        button.hidden = false;
-        close.hidden = false;
-
-        const openDesc = () => {
-          dialog.hidden = false;
-          wrapper.setAttribute('inert', 'inert');
-          dialog.focus();
-          window.addEventListener('keydown', function escaped(e) {
-            if (e.key === 'Escape') {
-              closeDesc();
-              window.removeEventListener('keydown', escaped);
-            }
-          });
-        }
-
-        const closeDesc = () => {
-          dialog.hidden = true;
-          wrapper.removeAttribute('inert');
-          button.focus();
-        }
-
-        button.addEventListener('click', openDesc);
-        close.addEventListener('click', closeDesc);
-
-
       })();
     </script>
-    {% endif %}
   </body>
 </html>

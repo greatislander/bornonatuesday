@@ -21,10 +21,15 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.10.0",
     "@11ty/eleventy-plugin-rss": "^1.0.7",
+    "axios": "^0.19.2",
     "cross-env": "^7.0.2",
     "cssnano": "^4.1.10",
     "html-minifier": "^4.0.0",
     "postcss": "^7.0.27",
     "postcss-cli": "^7.1.0"
+  },
+  "dependencies": {
+    "@11ty/eleventy-cache-assets": "^2.0.2",
+    "@tbranyen/jsdom": "^13.0.0"
   }
 }

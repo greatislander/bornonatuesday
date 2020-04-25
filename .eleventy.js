@@ -3,11 +3,17 @@ const pluginRss = require('@11ty/eleventy-plugin-rss');
 const dateFilter = require('./src/filters/date-filter.js');
 const w3cDateFilter = require('./src/filters/w3c-date-filter.js');
 const navLinks = require('./src/filters/navLinks.js');
+const extractCaptionShortcode = require('./src/shortcodes/extract-caption.js');
+const extractImagesFilter = require('./src/filters/extract-images.js');
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
 
   eleventyConfig.addLayoutAlias('main', 'layouts/main.njk');
+  eleventyConfig.addLayoutAlias('page', 'layouts/page.njk');
+
+  eleventyConfig.addShortcode('extractCaption', extractCaptionShortcode);
+  eleventyConfig.addFilter('extractImages', extractImagesFilter);
 
   eleventyConfig.addPassthroughCopy('src/images');
 

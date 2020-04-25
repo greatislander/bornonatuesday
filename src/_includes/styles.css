@@ -33,7 +33,10 @@ p {
 img {
   display: block;
   max-width: 100%;
-  max-height: calc(100vh - 16rem);
+}
+
+img + img {
+  margin-top: 2em;
 }
 
 main {
@@ -44,12 +47,28 @@ nav, header, main {
   padding: 2em 1em;
 }
 
+figure {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 figure > a {
   display: block; /* so outline appears in Chrome */
 }
 
+figure > figcaption {
+  padding: 2em 0 0;
+  text-align: center;
+}
+
 main {
   padding: 0 1em;
+}
+
+main.page {
+  max-width: 75ch;
+  width: 100%;
 }
 
 nav li {

@@ -1,0 +1,15 @@
+{%- set images = comic.content.rendered | extractImages -%}
+
+{{ '---' }}
+title: {{ comic.title.rendered | safe }}
+images:
+{%- for image in images %}
+  - id: {{ image.id }}
+    alt: {% if image.alt %}>- {{ image.alt }}{% else %}''{% endif %}
+    title: {% if image.title %}>- {{ image.title }}{% else %}''{% endif %}
+    src: {{ image.src }}
+{%- endfor %}
+larger: ''
+caption: >- {% extractCaption comic.content.rendered %}
+date: {{ comic.date_gmt }}Z
+{{ '---' }}

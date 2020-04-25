@@ -1,0 +1,12 @@
+{% set base = site.fullUrl if isBuild else "" %}
+{% include 'layouts/head.njk' %}
+<div class="wrapper">
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
+  <main class="page">
+    {{ content | safe }}
+  </main>
+  {% include 'layouts/nav.njk' %}
+</div>
+{% include 'layouts/foot.njk' %}

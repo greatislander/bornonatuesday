@@ -20,7 +20,20 @@
     <meta property="og:image:alt" content="{{ alt }}">
     <meta name="twitter:image" content="{{ base }}{{ image }}">
     <meta name="twitter:image:alt" content="{{ alt }}">
-    <title>{% if not home %}{{ title }} : {% endif %}{{ site.name }}</title>
+    <title>{% if not home %}{{ title }} | {% endif %}{{ site.name }}</title>
+    {% if page.url === '/about/' %}
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "name": "{{ title }}",
+        {% if site.author %}
+        "creator": "{{ site.author }}"
+        {% endif %}
+        "url": "{{ base }}/about/"
+      }
+    </script>
+    {% else %}
     <script type="application/ld+json">
       {
         "@context": "http://schema.org",
@@ -29,11 +42,12 @@
         {% if site.author %}
         "creator": "{{ site.author }}"
         {% endif %}
-        {% if description %}
-        "description": "{{ description }}"
+        {% if caption %}
+        "description": "{{ caption }}"
         {% endif %}
         "url": "{{ base }}{{ image }}"
       }
     </script>
+    {% endif %}
   </head>
   <body>

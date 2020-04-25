@@ -2,9 +2,11 @@
   {% set latest = collections.posts[collections.posts.length - 1].data %}
   {% set title = latest.title %}
   {% set date = latest.date %}
-  {% set description = latest.description %}
+  {% set maxWidth = latest.maxWidth %}
+  {% set caption = latest.caption %}
   {% set image = latest.image %}
   {% set alt = latest.alt %}
+  {% set imageTitle = latest.imageTitle %}
   {% set originalUrl = latest.page.url %}
 {% endif %}
 {% set base = site.fullUrl if isBuild else "" %}
@@ -18,26 +20,20 @@
         {{ date | dateFilter }}
       </time>
       {% endif %}
-      {% if description %}
-      <button class="q" aria-label="show description" hidden>[?]</button>
-      {% endif %}
     </div>
   </header>
   <main>
     <figure>
-      <a href="{{ base }}{% if larger %}{{ larger }}{% else %}{{ image }}{% endif %}">
-        <img src="{{ base }}{{ image }}" alt="{{ alt }} (press to enlarge)" aria-describedby="meta" loading="lazy">
+      {% for image in images %}
+      <a href="{{ base }}{% if image.larger %}{{ image.larger }}{% else %}{{ image.src }}{% endif %}">
+        <img {% if image.maxWidth %}style="max-width: {{ image.maxWidth }}px;" {% endif %}src="{{ base }}{{ image.src }}" title="{{ image.title }}" alt="{{ image.alt }} (press to enlarge)" loading="lazy">
       </a>
+      {% endfor %}
+      {% if caption %}
+      <figcaption>{{ caption }}</figcaption>
+      {% endif %}
     </figure>
   </main>
   {% include 'layouts/nav.njk' %}
 </div>
-{% if description %}
-<div role="dialog" aria-labelledby="desc" tabindex="-1">
-  <div>
-    <p id="desc">{{ description }}</p>
-    <button class="close" aria-label="close" hidden>[close]</button>
-  </div>
-</div>
-{% endif %}
 {% include 'layouts/foot.njk' %}
